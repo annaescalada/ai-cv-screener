@@ -1,8 +1,4 @@
 import OpenAI from "openai";
-import * as path from "path";
-import * as dotenv from "dotenv";
-
-dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
 

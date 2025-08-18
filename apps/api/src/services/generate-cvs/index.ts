@@ -1,20 +1,17 @@
-import { generateCV } from "./generate";
+import { generateCV } from "./text";
 import { generatePhoto } from "./photos";
 import { renderCVToHTML, saveAsPDF } from "./render";
-
-const NUM_CVS = 1;
 
 function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function main() {
-  console.log(`Generating ${NUM_CVS} CVs with OpenAI...`);
+export async function generateAndSaveCVs(num: number = 1) {
   let generated = 0;
 
-  while (generated < NUM_CVS) {
+  while (generated < num) {
     try {
-      console.log(`\n➡️  [${generated + 1}/${NUM_CVS}] Generating CV...`);
+      console.log(`\n➡️  [${generated + 1}/${num}] Generating CV...`);
       const cv = await generateCV(generated);
 
       console.log("🖼️  Generating photo...");
@@ -28,12 +25,10 @@ async function main() {
       generated++;
       await sleep(5000);
     } catch (err) {
-      console.error("❌ Error generating CV, retrying...", err);
+      console.error("❌ Error, retrying...", err);
       await sleep(5000);
     }
   }
 
-  console.log("\n🎉 Done!");
+  console.log("\n🎉 All CVs generated!");
 }
-
-main();

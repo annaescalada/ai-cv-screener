@@ -1,6 +1,4 @@
-const API_BASE =
-  (import.meta as { env?: { VITE_API_URL?: string } }).env?.VITE_API_URL ||
-  (typeof window !== "undefined" ? window.location.origin : "http://localhost:3001");
+const API_BASE = "http://localhost:3000";
 
 export async function generateCVs() {
   const res = await fetch(`${API_BASE}/cvs/generate`, {

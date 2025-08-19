@@ -19,7 +19,7 @@ export default function GenerateButton({ setLoading, loading }: { readonly setLo
     <button
       onClick={handleClick}
       disabled={loading}
-      className="px-4 py-2 rounded-lg border border-teal-600 text-teal-600 hover:bg-teal-700 hover:border-teal-700 hover:text-white disabled:opacity-50 transition"
+      className="px-4 py-2 rounded-lg border border-amber-500 text-amber-500 hover:bg-amber-500 hover:border-amber-500 hover:text-white disabled:opacity-50 transition"
     >
       {loading ? "Generating..." : "Generate CVs"}
     </button>

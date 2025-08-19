@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
+    "dev": "ts-node-dev src/index.ts",
     "gen": "ts-node ./scripts/generate-cvs.ts"
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@lancedb/lancedb": "^0.21.3",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "pdf-parse": "^1.1.1"
   },

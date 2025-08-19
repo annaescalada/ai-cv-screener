@@ -43,5 +43,9 @@ coverage/
 data/pdfs/
 data/index/
 
+# LanceDB database files
+data/embeddings/
+*.lance
+
 # Misc
 *.local

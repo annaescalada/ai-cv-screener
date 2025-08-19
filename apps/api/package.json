@@ -13,6 +13,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@lancedb/lancedb": "^0.21.3",
+    "apache-arrow": "^21.0.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "pdf-parse": "^1.1.1"

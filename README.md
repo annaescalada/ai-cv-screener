@@ -145,17 +145,36 @@ project-root/
 
 ```mermaid
 flowchart TD
-    A[Generate CVs] --> B[PDF + Photo Stored in /data/cvs]
-    B --> C[Process CVs]
-    C --> D[Text Extraction + Chunking]
-    D --> E[Embeddings with OpenAI]
-    E --> F[LanceDB Vector Store]
-    G[User Query] --> H[Embedding]
-    H --> F
-    F --> I[Top-K Relevant Chunks]
-    I --> J[OpenAI GPT-4o-mini Completion]
-    J --> K[Answer + Sources Returned]
-    K --> L[React UI Chat]
+    subgraph CV_Generation ["CV Generation"]
+        A1["Generate Text (OpenAI)"] --> A2["Generate Photo (OpenAI)"]
+        A2 --> A3["Render PDF"]
+        A3 --> B["CVs stored in apps/api/data/cvs"]
+    end
+
+    subgraph Processing ["Processing CVs"]
+        B --> C["Extract Text (pdf-parse)"]
+        C --> D["Chunking"]
+        D --> E["Embeddings with OpenAI"]
+        E --> F["LanceDB stores embedding + text + metadata"]
+    end
+
+    subgraph Query ["User Query Pipeline"]
+        G["User Question"] --> H["Embed Question with OpenAI"]
+        H -. query .-> F
+        F --> I["Retrieve Top-K Chunks"]
+        I --> J["LLM Answer (GPT-4o-mini)"]
+        J --> K["Answer + Source PDFs"]
+    end
+
+    subgraph Frontend ["React UI"]
+        X1["Generate CVs Button"] -->|POST /cvs/generate| CV_Generation
+        X2["Process CVs Button"] -->|POST /rag/process| Processing
+        X3["Ask Question"] -->|POST /rag/query| Query
+        K --> X4["Chat UI + Clickable PDF Sources"]
+    end
+
+    %% New: script trigger
+    S1["Script"] -->|Trigger CV generation| CV_Generation
 ```
 
 ---

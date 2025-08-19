@@ -7,10 +7,10 @@ export default function ProcessButton({ loading, setLoading }: { readonly loadin
       setLoading(true);
       const res= await processCVs();
       console.log("Processing result:", res);
-      alert("✅ CVs processed successfully!");
+      alert("CVs processed successfully!");
     } catch (err) {
       console.error(err);
-      alert("❌ Failed to process CVs");
+      alert("Failed to process CVs");
     } finally {
       setLoading(false);
     }

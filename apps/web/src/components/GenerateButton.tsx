@@ -6,10 +6,10 @@ export default function GenerateButton({ setLoading, loading }: { readonly setLo
     try {
       setLoading(true);
       await generateCVs();
-      alert("✅ CVs generated successfully!");
+      alert("CVs generated successfully!");
     } catch (err) {
       console.error(err);
-      alert("❌ Failed to generate CVs");
+      alert("Failed to generate CVs");
     } finally {
       setLoading(false);
     }

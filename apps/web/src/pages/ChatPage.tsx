@@ -32,7 +32,7 @@ export default function ChatPage() {
             console.error(err);
             setMessages((prev) => [
                 ...prev,
-                { role: "assistant", content: "❌ Error fetching response" },
+                { role: "assistant", content: "Error fetching response" },
             ]);
         }
     };

@@ -8,7 +8,7 @@ router.post("/generate", async (_req, res) => {
     const result = await generateAndSaveCVs();
     res.status(200).json({ ok: true, generated: result });
   } catch (err) {
-    console.error("❌ Error generating CVs:", err);
+    console.error("Error generating CVs:", err);
     res.status(500).json({ error: "Generation failed" });
   }
 });

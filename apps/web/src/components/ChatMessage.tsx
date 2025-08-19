@@ -10,11 +10,10 @@ export default function ChatMessage({ role, content, sources }: Readonly<ChatMes
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"} w-full`}>
       <div
-        className={`max-w-2xl px-4 py-3 rounded-2xl shadow-sm ${
-          isUser
-            ? "bg-teal-600 text-white rounded-br-none"
-            : "bg-white text-gray-900 border rounded-bl-none"
-        }`}
+        className={`max-w-2xl px-4 py-3 rounded-2xl shadow-sm ${isUser
+          ? "text-gray-900 bg-teal-50 rounded-br-none"
+          : "bg-white text-gray-900 border rounded-bl-none"
+          }`}
       >
         <p className="whitespace-pre-wrap">{content}</p>
         {sources && sources.length > 0 && (
@@ -24,10 +23,10 @@ export default function ChatMessage({ role, content, sources }: Readonly<ChatMes
               {sources.map((s) => (
                 <li key={s.file}>
                   <a
-                    href={`/cvs/${s.file}`}
+                    href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline text-teal-300"
+                    className="text-blue-600 underline"
                   >
                     {s.file}
                   </a>
@@ -40,3 +39,5 @@ export default function ChatMessage({ role, content, sources }: Readonly<ChatMes
     </div>
   );
 }
+
+

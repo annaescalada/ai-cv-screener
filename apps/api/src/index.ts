@@ -11,13 +11,17 @@ import cors from "cors";
 const app = express();
 app.use(express.json());
 
-app.use(cors({
-  origin: "http://localhost:5173",
-  methods: ["GET", "POST", "OPTIONS"],
-}));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "OPTIONS"],
+  })
+);
 
 app.use("/cvs", cvsRoutes);
 app.use("/rag", ragRoutes);
+
+app.use("/files", express.static(path.resolve(__dirname, "../data/cvs")));
 
 app.listen(3000, () => {
   console.log("🚀 API running at http://localhost:3000");

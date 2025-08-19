@@ -42,7 +42,7 @@ export default function ChatPage() {
     return (
         <div className="flex flex-col h-screen bg-gray-50">
             <header className="p-4 border-b bg-white flex justify-between items-center gap-2 shadow-sm">
-                <h1 className="text-xl font-bold text-gray-800">AI CV Screener</h1>
+                <h1 className="text-xl font-bold text-gray-800">; AI CV Screener</h1>
                 <div className="flex gap-2">
                     <GenerateButton loading={isGenerateLoading} setLoading={setIsGenerateLoading} />
                     <ProcessButton loading={isProcessLoading} setLoading={setIsProcessLoading} />
